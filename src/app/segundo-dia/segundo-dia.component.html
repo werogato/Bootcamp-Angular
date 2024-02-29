@@ -1,0 +1,68 @@
+<p>segundo dia</p>
+<!-- <button class="btn btn-primary" (click)="clickButton('hola mundo')">
+
+    cambios
+</button>
+
+{{variable}} -->
+
+
+<!-- <div *ngFor="let itemuser of user">
+    <div>{{itemuser.name}}</div>
+
+</div>
+
+
+<hr>
+
+<ul *ngFor="let itemuser of user">
+    <li>{{itemuser.name}}</li>
+    <li>{{itemuser.descripcion}}</li>
+</ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col1">nombre</th>
+            <th scope="col1">Descripcion</th>
+
+        </tr>
+    </thead>
+
+    <body>
+        <tr *ngFor="let itemuser of user">
+            <th>{{itemuser.name}}</th>
+            <th>{{itemuser.descripcion}}</th>
+        </tr>
+    </body>
+
+</table> -->
+
+<h1>Input</h1>
+
+<input type="text" class="form-control" [(ngModel)]="variable">
+{{variable}}
+
+<form [formGroup]=miFormulario>
+
+    Usuario <input [class.is-invalid]="miFormulario.get('username')?.touched && miFormulario.get('username')?.invalid"
+    type="text" 
+    class="form-control" 
+    formControlName="username"
+    (change)="cambio($event)">
+    
+    
+    Contraseña <input [class.is-invalid]="miFormulario.get('userpassword')?.touched && miFormulario.get('userpassword')?.invalid"
+    type="text" 
+    class="form-control" 
+    formControlName="userpassword"><br>
+    
+    <button 
+    class="btn btn-primary" 
+    type="submit">Enviar
+    </button>
+    
+
+</form>
+
+{{miFormulario.value | json}}
