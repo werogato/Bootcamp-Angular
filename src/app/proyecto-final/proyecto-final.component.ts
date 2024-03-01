@@ -17,89 +17,89 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } 
 export class ProyectoFinalComponent {
 
   users: any = []
-  position: any ={}
+  position: any = {}
 
   bandera = false;
 
   constructor() {
 
   }
-  miFormulario= new FormGroup ({
+  miFormulario = new FormGroup({
 
-    
+
     username: new FormControl('', Validators.required),
-    descripcion: new FormControl('',Validators.required),
- 
+    descripcion: new FormControl('', Validators.required),
+
   });
 
-  cambio(event:any){
+  cambio(event: any) {
     event.preventDefault()
   }
 
-  showModal(){
-    this.miFormulario.setValue({username:"",descripcion:""})
-    this.position=null
+  showModal() {
+    this.miFormulario.setValue({ username: "", descripcion: "" })
+    this.position = null
   }
 
-  borrar(pos:number) {
-    this.users.splice(pos,1);
+  borrar(pos: number) {
+    this.users.splice(pos, 1);
     localStorage.clear();
     localStorage.setItem('actividades', JSON.stringify(this.miFormulario));
   }
 
-  index= -1
+  index = -1
 
-  editartexto(user:any, i:number) {
+  editartexto(user: any, i: number) {
     console.log(user)
-    this.miFormulario.setValue({username:user.username, descripcion:user.descripcion})
+    this.miFormulario.setValue({ username: user.username, descripcion: user.descripcion })
     this.position = user.position
-    this.index=i
-  
+    this.index = i
+
   }
 
-  savedata(){
+  savedata() {
     let obj = {
       ...this.miFormulario.value,
-      position:this.position
+      position: this.position
     }
 
 
-    if(!this.bandera){
-      this.users[this.index]=obj
+    if (!this.bandera) {
+      this.users[this.index] = obj
 
     }
-    else{
+    else {
       this.users.push(obj);
     }
-    
+
 
 
   }
-  vertexto(user:any, i:number) {
+  vertexto(user: any, i: number) {
     console.log(user)
-    this.center=user.position
-    this.zoom=10
-    
-  
+    this.center = user.position
+    this.zoom = 10
+
+
   }
 
 
 
- 
 
-  coordenadas(event:any){
+
+  coordenadas(event: any) {
     console.log(event.latLng.lat())
     console.log(event.latLng.lng())
     this.position = {
       lat: event.latLng.lat(),
       lng: event.latLng.lng()
     }
-  
-    
-  
+
+
+
   }
-  
-  center: google.maps.LatLngLiteral = {lat: 24, lng: 12};
+
+  center: google.maps.LatLngLiteral = { lat: 24, lng: 12 };
   zoom = 4;
 
 

@@ -17,7 +17,8 @@
 
                 <!--Modal-->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="showModal(); bandera=true">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    (click)="showModal(); bandera=true">
                     Crear nuevo usuario
                 </button>
 
@@ -34,31 +35,25 @@
                             <div class="container">
                                 <div class="d-flex justify-content-between">
                                     <div class="modal-body">
-                                        
+
                                         <p>Nombre</p>
-                                            <input [class.is-invalid]="miFormulario.get('username')?.touched && miFormulario.get('username')?.invalid"
-                                            type="text" 
-                                            class="form-control" 
-                                            formControlName="username"
+                                        <input
+                                            [class.is-invalid]="miFormulario.get('username')?.touched && miFormulario.get('username')?.invalid"
+                                            type="text" class="form-control" formControlName="username"
                                             (change)="cambio($event)">
 
                                         <p>Descripcion</p>
-                                            <input [class.is-invalid]="miFormulario.get('descripcion')?.touched && miFormulario.get('descripcion')?.invalid"
-                                            type="text" 
-                                            class="form-control" 
-                                            formControlName="descripcion">
+                                        <input
+                                            [class.is-invalid]="miFormulario.get('descripcion')?.touched && miFormulario.get('descripcion')?.invalid"
+                                            type="text" class="form-control" formControlName="descripcion">
                                     </div>
 
                                     <div class="mapa">
-                                        <google-map 
-                                        height="300px" 
-                                        width="300px"
-                                        [center]="center"
-                                        [zoom]="zoom"
-                                        (mapClick)="coordenadas($event)">
-                                        <map-marker [position]="position"  >
-                                         </map-marker>  
-                                            
+                                        <google-map height="300px" width="300px" [center]="center" [zoom]="zoom"
+                                            (mapClick)="coordenadas($event)">
+                                            <map-marker [position]="position">
+                                            </map-marker>
+
                                         </google-map>
 
                                     </div>
@@ -66,11 +61,8 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">cerrar</button>
-                                    <button type="submit" class="btn btn-primary"
-                                    class ="btn btn-primary"
-                                    
-                                    data-bs-dismiss="modal" data-bs-target="#exampleModal"
-                                    >Guardar</button>
+                                    <button type="submit" class="btn btn-primary" class="btn btn-primary"
+                                        data-bs-dismiss="modal" data-bs-target="#exampleModal">Guardar</button>
                                 </div>
                             </div>
                         </div>
@@ -96,17 +88,23 @@
                     <div class="card-header bg-transparent border-success">
                         <nav class="navbar bg-body-tertiary card-change">
                             <div class="container-fluid">
-                              <a class="navbar-brand">Nombre:</a>
-                              <a class="navbar-brand">{{itemuser.username}}</a>
-                              <form class="d-flex justify-content-between" >
-                                
-                                <button class="btn btn-outline-success" type="submit" (click)="borrar(i)"><img src = "assets/borrar.png" class ="icono-card"></button>
-                        
-                                <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editartexto(itemuser, i); bandera = false"  ><img src = "assets/editar.png" class = "icono-card"></button>
-                                <button class="btn btn-outline-success" type="submit" (click)="vertexto(itemuser, i)"><img src = "assets/ver.png" class = "icono-card"></button>
-                              </form>
+                                <a class="navbar-brand">Nombre:</a>
+                                <a class="navbar-brand">{{itemuser.username}}</a>
+                                <form class="d-flex justify-content-between">
+
+                                    <button class="btn btn-outline-success" type="submit" (click)="borrar(i)"><img
+                                            src="assets/borrar.png" class="icono-card"></button>
+
+                                    <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal"
+                                        (click)="editartexto(itemuser, i); bandera = false"><img src="assets/editar.png"
+                                            class="icono-card"></button>
+                                    <button class="btn btn-outline-success" type="submit"
+                                        (click)="vertexto(itemuser, i)"><img src="assets/ver.png"
+                                            class="icono-card"></button>
+                                </form>
                             </div>
-                          </nav>
+                        </nav>
                     </div>
                     <div class="card-body text-success">
                         <h5 class="card-title">Descripcion:</h5>
@@ -118,15 +116,10 @@
 
         </div>
         <div class="mapa">
-            <google-map 
-                height="400px"
-                width="750px"
-                [center]="center"
-                [zoom]="zoom"
-                >
+            <google-map height="400px" width="750px" [center]="center" [zoom]="zoom">
                 <map-marker [position]="item.position" *ngFor="let item of users">
-                 </map-marker>   
-              
+                </map-marker>
+
 
             </google-map>
         </div>
